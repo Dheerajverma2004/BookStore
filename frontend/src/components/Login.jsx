@@ -30,14 +30,14 @@ const Login = () => {
         }
       })
       .catch((err) => {
-        if (err.respose) {
+        if (err.response) {
           console.log(err);
           toast.error("Error: " + err.response.data.message);
           setTimeout(() => {}, 2000);
         }
       });
   };
-
+  
   return (
     <>
       <dialog id="my_modal_3" className="modal">
