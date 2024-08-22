@@ -2,8 +2,10 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
+import path from "path";
 import bookRoute from "./route/book.route.js";
 import userRoute from "./route/user.route.js";
+//import mongodb_uri from "dotenv";
 
 const app = express();
 
@@ -16,7 +18,7 @@ const PORT = process.env.PORT || 4000;
 
 //connect to mongoDB
 try {
-  mongoose.connect('mongodb://localhost:27017/bookStoreDB');
+  mongoose.connect('mongodb+srv://dheerajvermacp:7zSGiRmfGKbhEO3J@cluster0.ar07h.mongodb.net/');
   console.log("connected to mongoDB");
 } catch (error) {
   console.log("Error:", error);
@@ -25,6 +27,19 @@ try {
 //defining routes
 app.use("/book", bookRoute);
 app.use("/user", userRoute);
+
+//deployment ka code hai ye
+
+if (process.env.NODE_ENV === "production") {
+  // Resolve the path to the `Frontend/dist` directory relative to the project root
+  const dirPath = path.resolve(); //this wil assign current directory path in dirPath
+  app.use(express.static("frontend/dist"))
+
+  // Handle all routes and serve the `index.html` file
+  app.get("*",(req,res)=>{
+    res.sendFile(path.resolve(dirPath,"frontend","dist","index.html"));
+  })
+}
 
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
