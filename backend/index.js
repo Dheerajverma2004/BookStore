@@ -5,7 +5,7 @@ import cors from "cors";
 import path from "path";
 import bookRoute from "./route/book.route.js";
 import userRoute from "./route/user.route.js";
-//import mongodb_uri from "dotenv";
+import MONGO_URI from "dotenv";
 
 const app = express();
 
@@ -19,7 +19,7 @@ const PORT = process.env.PORT || 4000;
 
 //connect to mongoDB
 try {
-  mongoose.connect('mongodb+srv://dheerajvermacp:<db_password>@cluster0.ar07h.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0');
+  mongoose.connect(MONGO_URI);
   console.log("connected to mongoDB");
 } catch (error) {
   console.log("Error:", error);
