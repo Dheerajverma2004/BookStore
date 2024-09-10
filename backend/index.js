@@ -33,7 +33,7 @@ app.use("/user", userRoute);
 if (process.env.NODE_ENV === "production") {
   // Resolve the path to the `Frontend/dist` directory relative to the project root
   const dirPath = path.resolve(); //this wil assign current directory path in dirPath
-  app.use(express.static("frontend/dist"))
+  app.use(express.static("..frontend/dist"))
 
   // Handle all routes and serve the `index.html` file
   app.get("*",(req,res)=>{
