@@ -17,7 +17,7 @@ const Login = () => {
       password: data.password,
     };
     await axios
-      .post("/user/login", userInfo)
+      .post("https://bookstore-app-ow4d.onrender.com/user/login", userInfo)
       .then((res) => {
         console.log(res.data);
         if (res.data) {

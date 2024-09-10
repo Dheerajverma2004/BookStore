@@ -13,8 +13,8 @@ dotenv.config();
 app.use(cors()); // (cors)---ye middleware hota hai
 app.use(express.json());
 
-//const PORT = process.env.PORT || 4000;
-const PORT = 'https://bookstore-app-ow4d.onrender.com';
+const PORT = process.env.PORT || 4000;
+//const PORT = 'https://bookstore-app-ow4d.onrender.com';
 const URI = process.env.mongoDB_URI;
 
 //connect to mongoDB

@@ -23,7 +23,7 @@ function Signup() {
       password: data.password,
     };
     await axios
-      .post("/user/signup", userInfo)
+      .post("https://bookstore-app-ow4d.onrender.com/user/signup", userInfo)
       .then((res) => {
         console.log(res.data);
         if (res.data) {
