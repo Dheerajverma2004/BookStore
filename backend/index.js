@@ -5,7 +5,7 @@ import cors from "cors";
 import path from "path";
 import bookRoute from "./route/book.route.js";
 import userRoute from "./route/user.route.js";
-import MONGO_URI from "dotenv";
+//import MONGO_URI from "dotenv";
 
 const app = express();
 
@@ -15,11 +15,11 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 4000;
 //const PORT = 'https://bookstore-app-ow4d.onrender.com';
-//const URI = process.env.mongoDB_URI;
+const URI = process.env.mongoDB_URI;
 
 //connect to mongoDB
 try {
-  mongoose.connect(MONGO_URI);
+  mongoose.connect(URI);
   console.log("connected to mongoDB");
 } catch (error) {
   console.log("Error:", error);
