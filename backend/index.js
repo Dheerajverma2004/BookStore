@@ -18,7 +18,7 @@ const PORT = process.env.PORT || 4000;
 
 //connect to mongoDB
 try {
-  mongoose.connect('mongodb+srv://dheerajvermacp:7zSGiRmfGKbhEO3J@cluster0.ar07h.mongodb.net/');
+  mongoose.connect('mongodb+srv://dheerajvermacp:<db_password>@cluster0.ar07h.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0');
   console.log("connected to mongoDB");
 } catch (error) {
   console.log("Error:", error);
@@ -28,7 +28,7 @@ try {
 app.use("/book", bookRoute);
 app.use("/user", userRoute);
 
-//deployment ka code hai ye
+//below is deployment code 
 
 if (process.env.NODE_ENV === "production") {
   // Resolve the path to the `Frontend/dist` directory relative to the project root

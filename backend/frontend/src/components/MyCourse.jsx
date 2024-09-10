@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 function MyCourse() {
   const [book, setBook] = useState([]);
+  const [error, setError] = useState(null); // State for storing errors
   useEffect(() => {
     const getBook = async () => {
       try {
@@ -13,6 +14,7 @@ function MyCourse() {
         setBook(res.data);
       } catch (error) {
         console.log(error);
+        // Consider showing an error message to the user here
       }
     };
     getBook();
@@ -39,6 +41,13 @@ function MyCourse() {
               <button className="btn btn-secondary bg-pink-500">Back</button>
             </Link>
           </div>
+          {/* Error message display */}
+          {error && (
+            <div className="text-red-500 text-center mt-4">
+              {error}
+            </div>
+          )}
+          {/* Display books if no error */}
           <div className="mt-12 grid grid-cols-1 md:grid-cols-4">
             {book.map((item) => (
               <Cards key={item.id} item={item} />

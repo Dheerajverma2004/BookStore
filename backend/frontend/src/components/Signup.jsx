@@ -1,10 +1,12 @@
 import React from "react";
-import {  Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Login from "./Login";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
 
 function Signup() {
+  const [showLoginModal, setShowLoginModal] = React.useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
@@ -31,7 +33,7 @@ function Signup() {
         localStorage.setItem("Users", JSON.stringify(res.data.user));
       })
       .catch((err) => {
-        if (err.respose) {
+        if (err.response) {
           console.log(err);
           alert("Error: " + err.response.data.message);
         }
@@ -41,7 +43,7 @@ function Signup() {
     <div className="flex h-screen items-center justify-center text-xl">
       <div className="w-[600px]">
         <div className="modal-box">
-          <form onSubmit={handleSubmit(onSubmit)} method="dialog">
+          <form onSubmit={handleSubmit(onSubmit)} >
             {/* if there is a button in form, it will close the modal */}
             <Link
               to="/"
@@ -107,9 +109,10 @@ function Signup() {
               <button className="bg-pink-500 text-white rounded-md px-3 py-1">
                 SignUp
               </button>
+              <ToastContainer />
               <p>
                 Have account!{" "}
-                <button
+                {/* <button
                   className="underline text-blue-500 cursor-pointer"
                   onClick={() =>
                     document.getElementById("my_modal_3").showModal()
@@ -117,7 +120,14 @@ function Signup() {
                 >
                   Login
                 </button>{" "}
-                <Login />
+                <Login /> */}
+                <button
+                  className="underline text-blue-500 cursor-pointer"
+                  onClick={() => setShowLoginModal(true)}
+                >
+                  Login
+                </button>
+                {showLoginModal && <Login />}
               </p>
             </div>
           </form>
