@@ -5,7 +5,6 @@ import cors from "cors";
 import path from "path";
 import bookRoute from "./route/book.route.js";
 import userRoute from "./route/user.route.js";
-//import MONGO_URI from "dotenv";
 
 const app = express();
 
@@ -14,16 +13,27 @@ app.use(cors()); // (cors)---ye middleware hota hai
 app.use(express.json());
 
 const PORT = process.env.PORT || 4000;
-//const PORT = 'https://bookstore-app-ow4d.onrender.com';
-const URI = process.env.mongoDB_URI;
+const mongoUri = process.env.MONGO_URI;
 
-//connect to mongoDB
-try {
-  mongoose.connect(URI);
-  console.log("connected to mongoDB");
-} catch (error) {
-  console.log("Error:", error);
+// Ensure MongoDB URI is present
+if (!mongoUri) {
+  console.error("MongoDB URI not found. Make sure MONGO_URI is defined in your .env file.");
+  process.exit(1);  // Exit if no URI is found
 }
+
+// Connect to MongoDB
+mongoose
+  .connect(mongoUri)  // Removed deprecated options
+  .then(() => {
+    console.log("Connected to MongoDB successfully");
+  })
+  .catch((error) => {
+    console.error("Error connecting to MongoDB:", error.message);
+    process.exit(1);  // Exit the process if there's a connection error
+  });
+
+
+
 
 //defining routes
 app.use("/book", bookRoute);
