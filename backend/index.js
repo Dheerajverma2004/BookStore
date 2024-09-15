@@ -39,34 +39,18 @@ mongoose
 app.use("/book", bookRoute);
 app.use("/user", userRoute);
 
-// //below is deployment code 
+//below is deployment code 
 
-// if (process.env.NODE_ENV === "production") {
-//   // Resolve the path to the `Frontend/dist` directory relative to the project root
-//   const dirPath = path.resolve(); //this wil assign current directory path in dirPath
-//   app.use(express.static("../frontend/dist"))
-
-//   // Handle all routes and serve the `index.html` file
-//   app.get("*",(req,res)=>{
-//     res.sendFile(path.resolve(dirPath,"../frontend/dist","index.html"));
-//   })
-// }
-
-// Deployment code
 if (process.env.NODE_ENV === "production") {
-  const path = require("path"); // Ensure you require 'path'
-  const express = require("express"); // Ensure express is required if not done before
-  const app = express();
+  // Resolve the path to the `Frontend/dist` directory relative to the project root
+  const dirPath = path.resolve(); //this wil assign current directory path in dirPath
+  app.use(express.static("../frontend/dist"))
 
-  // Serve static files from the `frontend/dist` folder
-  app.use(express.static(path.resolve(__dirname, "../frontend/dist")));
-
-  // Handle all other routes and serve the `index.html` file
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "../frontend/dist", "index.html"));
-  });
+  // Handle all routes and serve the `index.html` file
+  app.get("*",(req,res)=>{
+    res.sendFile(path.resolve(dirPath,"../frontend/dist","index.html"));
+  })
 }
-
 
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
