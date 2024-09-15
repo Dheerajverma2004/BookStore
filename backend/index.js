@@ -8,6 +8,7 @@ import userRoute from "./route/user.route.js";
 
 const app = express();
 
+// Load environment variables from .env
 dotenv.config();
 app.use(cors()); // (cors)---ye middleware hota hai
 app.use(express.json());

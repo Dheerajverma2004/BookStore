@@ -13,7 +13,7 @@ node_modules
 dist-ssr
 *.local
 # Ignore environment variable files in the backend directory
-backend\.env
+#backend\.env
 
 # Editor directories and files
 .vscode/*
