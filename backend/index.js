@@ -13,8 +13,15 @@ dotenv.config();
 app.use(cors()); // (cors)---ye middleware hota hai
 app.use(express.json());
 
-const PORT = process.env.PORT || 4000;
+// Connect to MongoDB
 const mongoUri = process.env.MONGO_URI;
+
+// Define the Book schema and model
+const PORT = process.env.PORT || 4001;
+app.listen(port, () => {
+  console.log(`Server is listening on port ${port}`);
+});
+
 
 // Ensure MongoDB URI is present
 if (!mongoUri) {
