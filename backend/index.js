@@ -49,17 +49,17 @@ app.use("/book", bookRoute);
 app.use("/user", userRoute);
 
 //below is deployment code 
-
+// Start the server
 if (process.env.NODE_ENV === "production") {
-  // Resolve the path to the `Frontend/dist` directory relative to the project root
-  const dirPath = path.resolve(); //this wil assign current directory path in dirPath
-  app.use(express.static("../frontend/dist"))
+  const dirPath = path.resolve(); // Current directory path
+  app.use(express.static(path.join(dirPath, '../frontend/dist')));
 
-  // Handle all routes and serve the `index.html` file
-  app.get("*",(req,res)=>{
-    res.sendFile(path.resolve(dirPath,"../frontend/dist","index.html"));
-  })
+  // Handle all routes and serve the index.html file
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(dirPath, "../frontend/dist", "index.html"));
+  });
 }
+
 
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
