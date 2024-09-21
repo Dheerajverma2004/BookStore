@@ -17,10 +17,8 @@ app.use(express.json());
 const mongoUri = process.env.MONGO_URI;
 
 // Define the Book schema and model
-const PORT = process.env.PORT || 4001;
-app.listen(PORT, () => {
-  console.log(`Server is listening on port ${PORT}`);
-});
+const PORT = process.env.PORT || 4000;
+
 
 // Handle uncaught exceptions
 process.on('uncaughtException', function (err) {
@@ -44,8 +42,6 @@ mongoose
     console.error("Error connecting to MongoDB:", error.message);
     process.exit(1);  // Exit the process if there's a connection error
   });
-
-
 
 
 //defining routes
