@@ -18,8 +18,13 @@ const mongoUri = process.env.MONGO_URI;
 
 // Define the Book schema and model
 const PORT = process.env.PORT || 4001;
-app.listen(port, () => {
-  console.log(`Server is listening on port ${port}`);
+app.listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`);
+});
+
+// Handle uncaught exceptions
+process.on('uncaughtException', function (err) {
+  console.log('Caught exception: ', err);
 });
 
 
