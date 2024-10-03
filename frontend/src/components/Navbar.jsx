@@ -93,7 +93,7 @@ const Navbar = () => {
                 {navItems}
               </ul>
             </div>
-            <a className="text-2xl font-bold cursor-pointer">BookStore</a>
+            <a className="text-2xl font-bold cursor-pointer">BookFlare</a>
           </div>
           <div className=" navbar-end space-x-3 text-xl px-3 py-1">
             <div className="navbar-center hidden lg:flex">

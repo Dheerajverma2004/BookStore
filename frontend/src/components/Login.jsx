@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import toast from "react-hot-toast";
+const apiUrl = import.meta.env.VITE_BACKEND_URL;
 
 const Login = () => {
   const {
@@ -16,8 +17,8 @@ const Login = () => {
       email: data.email,
       password: data.password,
     };
-    await axios 
-      .post("https://bookstore-app-ow4d.onrender.com/user/login", userInfo)
+    await axios
+      .post(`${apiUrl}/user/login`, userInfo)
       .then((res) => {
         console.log(res.data);
         if (res.data) {
@@ -37,7 +38,7 @@ const Login = () => {
         }
       });
   };
-  
+
   return (
     <>
       <dialog id="my_modal_3" className="modal">

@@ -4,6 +4,7 @@ import Login from "./Login";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+const apiUrl = import.meta.env.VITE_BACKEND_URL;
 
 function Signup() {
   const [showLoginModal, setShowLoginModal] = React.useState(false);
@@ -22,8 +23,8 @@ function Signup() {
       email: data.email,
       password: data.password,
     };
-    await axios 
-      .post("https://bookstore-app-ow4d.onrender.com/user/signup", userInfo)
+    await axios
+      .post(`${apiUrl}/user/signup`, userInfo)
       .then((res) => {
         console.log(res.data);
         if (res.data) {
@@ -43,7 +44,7 @@ function Signup() {
     <div className="flex h-screen items-center justify-center text-xl">
       <div className="w-[600px]">
         <div className="modal-box">
-          <form onSubmit={handleSubmit(onSubmit)} >
+          <form onSubmit={handleSubmit(onSubmit)}>
             {/* if there is a button in form, it will close the modal */}
             <Link
               to="/"

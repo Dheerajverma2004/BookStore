@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Cards from "./Cards";
 import axios from "axios";
 import { Link } from "react-router-dom";
+const apiUrl = import.meta.env.VITE_BACKEND_URL;
 
 function MyCourse() {
   const [book, setBook] = useState([]);
@@ -9,7 +10,7 @@ function MyCourse() {
   useEffect(() => {
     const getBook = async () => {
       try {
-        const res = await axios.get("https://bookstore-app-ow4d.onrender.com/book");
+        const res = await axios.get(`${apiUrl}/book`);
         console.log(res.data);
         setBook(res.data);
       } catch (error) {
@@ -43,9 +44,7 @@ function MyCourse() {
           </div>
           {/* Error message display */}
           {error && (
-            <div className="text-red-500 text-center mt-4">
-              {error}
-            </div>
+            <div className="text-red-500 text-center mt-4">{error}</div>
           )}
           {/* Display books if no error */}
           <div className="mt-12 grid grid-cols-1 md:grid-cols-4">

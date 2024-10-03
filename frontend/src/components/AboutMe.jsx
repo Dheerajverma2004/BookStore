@@ -9,7 +9,7 @@ const AboutMe = () => {
           <br/>
           <h1>I'm <b><span className="text-red-500">Dheeraj verma</span></b>.</h1>
           <h2>B.Tech CSE Undergrad, Hope you like my <b><span className="text-green-500">MERN</span></b> project</h2>
-          <h3>'<b><span className="text-orange-300">BookStore Website</span></b>' made with <b><span className="text-red-600">♡</span></b> by Dhrj!</h3>
+          <h3>'<b><span className="text-orange-300">Bookstore Website</span></b>' made with <b><span className="text-red-600">♡</span></b> by Dhrj!</h3>
         </div>
       </div>
     </>
