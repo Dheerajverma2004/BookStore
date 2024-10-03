@@ -5,7 +5,7 @@ const AboutMe = () => {
     <>
       <div className="flex h-screen items-center justify-center text-xl">
         <div className="text-center justify-center">
-         <div className="px-40"> <img src="../../public/Dheeraj.png" width={250} height={250} /></div>
+         <div className="px-40"> <img src="../../dist/Dheeraj.png" width={250} height={250} /></div>
           <br/>
           <h1>I'm <b><span className="text-red-500">Dheeraj verma</span></b>.</h1>
           <h2>B.Tech CSE Undergrad, Hope you like my <b><span className="text-green-500">MERN</span></b> project</h2>
